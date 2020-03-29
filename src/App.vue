@@ -6,21 +6,27 @@
     <button @click="doChangeTitle">Change title</button>
     <hr />
     <p>{{ result }}</p>
+    <hr />
+    <hr />
+    <Validation title="Validation" :num="num"></Validation>
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
+import Validation from "./components/Validation.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    HelloWorld,
+    Validation
   },
   data: function() {
     return {
       message: "HELLO!!!",
-      result: "no event"
+      result: "no event",
+      num: 101
     };
   },
   methods: {
