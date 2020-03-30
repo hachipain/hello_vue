@@ -9,18 +9,23 @@
     <hr />
     <hr />
     <Validation title="Validation" :num="num"></Validation>
+    <hr />
+    <hr />
+    <Event title="Event"></Event>
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import Validation from "./components/Validation.vue";
+import Event from "./components/Event.vue";
 
 export default {
   name: "App",
   components: {
     HelloWorld,
-    Validation
+    Validation,
+    Event
   },
   data: function() {
     return {
