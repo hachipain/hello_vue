@@ -12,6 +12,24 @@
     <hr />
     <hr />
     <Event title="Event"></Event>
+    <!-- <hr />
+    <hr />
+    <SlotComponent title="Slot">
+      <p class="etc">Begin!</p>
+      <p slot="a" class="inner">*** First message ***</p>
+      <p class="etc">Middle...</p>
+      <p slot="b" class="inner">*** Second message ***</p>
+      <p class="etc">End.</p>
+      <p slot="c" class="inner">*** Third message ***</p>
+    </SlotComponent>-->
+    <hr />
+    <hr />
+    <SlotComponent title="Solt2">
+      <li v-for="obj in slotobjs" :key="obj.name">{{obj.name}} ({{obj.mail}})</li>
+    </SlotComponent>
+    <hr />
+    <hr />
+    <Render title="JSX?"></Render>
   </div>
 </template>
 
@@ -19,19 +37,28 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import Validation from "./components/Validation.vue";
 import Event from "./components/Event.vue";
+import SlotComponent from "./components/SlotComponent.vue";
+import Render from "./components/Render.vue";
 
 export default {
   name: "App",
   components: {
     HelloWorld,
     Validation,
-    Event
+    Event,
+    SlotComponent,
+    Render
   },
   data: function() {
     return {
       message: "HELLO!!!",
       result: "no event",
-      num: 101
+      num: 101, // validation error
+      slotobjs: [
+        { name: "Taro", mail: "taro@yamada" },
+        { name: "Hanako", mail: "hanako@flower" },
+        { name: "Sachiko", mail: "sachiko@happy" }
+      ]
     };
   },
   methods: {

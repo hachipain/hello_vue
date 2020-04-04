@@ -12,8 +12,29 @@
     </div>
     <hr />
     <div>
-      <input type="text" @keydown="type" />
+      <input
+        type="text"
+        @keypress="type"
+        @keydown.delete="clear"
+        @keydown.space="space"
+        @keydown.enter="enter"
+      />
     </div>
+    <hr />
+    <div
+      class="area"
+      @click.exact="exact"
+      @click.shift="shift"
+      @click.ctrl="ctrl"
+      @click.alt="alt"
+      @click.meta="meta"
+    >click here!!!</div>
+    <div
+      class="area"
+      @click.left.prevent="left"
+      @click.right.prevent="right"
+      @click.middle="middle"
+    >click here!!!</div>
   </div>
 </template>
 
@@ -45,11 +66,49 @@ export default {
       this.message = "";
     },
     type: function(event) {
-      this.message += event.key + " ";
-      if (event.key == "Escape") {
-        this.message = "";
+      if (event.key == "Enter") {
+        return;
       }
+      this.message += event.key + " ";
+      // if (event.key == "Escape") {
+      //   this.message = "";
+      // }
       event.target.value = "";
+    },
+    space: function() {
+      this.message += "_ ";
+    },
+    enter: function(event) {
+      const res = this.message.split(" ").join("");
+      this.message = res.split("_").join(" ");
+      event.target.value = "";
+    },
+    click: function() {
+      this.message = "click ";
+    },
+    exact: function() {
+      this.message += "**no any key**";
+    },
+    shift: function() {
+      this.message += "[shift]";
+    },
+    ctrl: function() {
+      this.message += "[ctrl]";
+    },
+    alt: function() {
+      this.message += "[alt]";
+    },
+    meta: function() {
+      this.message += "[meta]";
+    },
+    left: function() {
+      this.message = "[left button]";
+    },
+    right: function() {
+      this.message = "[right button]";
+    },
+    middle: function() {
+      this.message = "[middle button]";
     }
   }
 };
@@ -77,5 +136,12 @@ div.in {
   background-color: #ccc;
   width: 100px;
   height: 150px;
+}
+.area {
+  width: 300px;
+  height: 100px;
+  background-color: #ddd;
+  padding: 10px;
+  font-size: 20pt;
 }
 </style>
