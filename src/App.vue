@@ -25,11 +25,16 @@
     <hr />
     <hr />
     <SlotComponent title="Solt2">
-      <li v-for="obj in slotobjs" :key="obj.name">{{obj.name}} ({{obj.mail}})</li>
+      <li v-for="obj in slotobjs" :key="obj.name">
+        {{ obj.name }} ({{ obj.mail }})
+      </li>
     </SlotComponent>
     <hr />
     <hr />
     <Render title="JSX?"></Render>
+    <hr />
+    <hr />
+    <Anime title="Transition"></Anime>
   </div>
 </template>
 
@@ -39,6 +44,7 @@ import Validation from "./components/Validation.vue";
 import Event from "./components/Event.vue";
 import SlotComponent from "./components/SlotComponent.vue";
 import Render from "./components/Render.vue";
+import Anime from "./components/Anime.vue";
 
 export default {
   name: "App",
@@ -47,7 +53,8 @@ export default {
     Validation,
     Event,
     SlotComponent,
-    Render
+    Render,
+    Anime
   },
   data: function() {
     return {
